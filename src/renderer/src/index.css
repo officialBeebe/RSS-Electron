@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #333;
+	color: #e6e6e6;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+/* Debug */
+body * {
+	outline: 2px solid red;
+}
