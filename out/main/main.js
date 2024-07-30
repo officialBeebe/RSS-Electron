@@ -18,9 +18,10 @@ function _interopNamespaceDefault(e) {
   return Object.freeze(n);
 }
 const path__namespace = /* @__PURE__ */ _interopNamespaceDefault(path);
-let mainWindow;
+require("dotenv").config();
+const axios = require("axios");
 function createWindow() {
-  mainWindow = new electron.BrowserWindow({
+  let mainWindow2 = new electron.BrowserWindow({
     webPreferences: {
       preload: path__namespace.join(__dirname, "../preload/preload.js"),
       contextIsolation: true,
@@ -28,15 +29,25 @@ function createWindow() {
     }
   });
   electron.ipcMain.handle("ping", () => "pong");
-  mainWindow.loadURL("http://localhost:5173");
-  mainWindow.on("closed", () => mainWindow = null);
+  mainWindow2.loadURL("http://localhost:5173");
   if (process.env.NODE_ENV === "development") {
-    mainWindow.webContents.openDevTools();
+    mainWindow2.webContents.openDevTools();
   }
-  mainWindow.on("closed", () => mainWindow = null);
+  mainWindow2.on("closed", () => {
+    mainWindow2 = null;
+  });
 }
 electron.app.whenReady().then(() => {
   createWindow();
+  electron.ipcMain.handle("express-hello", async () => {
+    try {
+      const response = await axios.get("http://localhost:5069/");
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return { error: "Failed to fetch data" };
+    }
+  });
 });
 electron.app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
@@ -44,7 +55,7 @@ electron.app.on("window-all-closed", () => {
   }
 });
 electron.app.on("activate", () => {
-  if (mainWindow == null) {
+  if (mainWindow === null) {
     createWindow();
   }
 });

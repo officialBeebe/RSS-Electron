@@ -1,22 +1,39 @@
-
-// Accessing the customApi object from the window and invoking the 'ping' channel
-const func = async () => {
-  const res = await window.customApi.ping()
-  console.log(res)
-}
-// Console shows two 'pong' responses and an "I love my wife!" message
-func()
-console.log("I love my wife!")
-func()
+import { useEffect, useState } from 'react';
 
 function App() {
-  
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await window.expressApi.hello();
+      setData(res);
+    };
+
+    fetchData();
+  }, []);
+
+  // Extract date and time parts only if data and data.currentDate are defined
+  const date = data?.currentDate ? data.currentDate.split('T')[0] : '';
+  const time = data?.currentDate ? data.currentDate.split('T')[1].split('.')[0] : '';
 
   return (
     <>
-      <h1>I love my wife!</h1>
+      {!data ? (
+        <span>Loading...</span>
+      ) : (
+        <fieldset>
+          <legend>{data.serverName}</legend>
+          <p>{data.message}</p>
+          <ul>
+            <li>Date: {date}</li>
+            <li>Time: {time}</li>
+            <li>Uptime: {data.uptime}</li>
+            <li>Hostname: {data.hostname}</li>
+          </ul>
+        </fieldset>
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
