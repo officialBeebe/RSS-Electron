@@ -48,6 +48,20 @@ electron.app.whenReady().then(() => {
       return { error: "Failed to fetch data" };
     }
   });
+  electron.ipcMain.handle("express-rss-feeds", async () => {
+    try {
+      const response = await axios.get("http://localhost:5069/rss/get");
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching rss feeds:", error);
+      return { error: "Failed to fetch rss feeds" };
+    }
+  });
+  electron.ipcMain.handle("open-external-url", (event, url) => {
+    if (url) {
+      electron.shell.openExternal(url);
+    }
+  });
 });
 electron.app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {

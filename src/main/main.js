@@ -2,7 +2,7 @@
 require('dotenv').config();
 
 /* eslint-disable no-undef */
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import * as path from 'path';
 const axios = require('axios');
 
@@ -41,6 +41,24 @@ app.whenReady().then(() => {
         } catch (error) {
             console.error('Error fetching data:', error);
             return { error: 'Failed to fetch data' };
+        }
+    });
+
+    // Express API call for RSS feeds
+    ipcMain.handle('express-rss-feeds', async () => {
+        try {
+            const response = await axios.get('http://localhost:5069/rss/get');
+            return response.data;
+        } catch (error) {
+            console.error('Error fetching rss feeds:', error);
+            return { error: 'Failed to fetch rss feeds' };
+        }
+    });
+
+    // IPC handler for opening external URLs
+    ipcMain.handle('open-external-url', (event, url) => {
+        if (url) {
+            shell.openExternal(url);
         }
     });
 });
