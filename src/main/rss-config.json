@@ -1,0 +1,156 @@
+{
+    "settings": {
+        "categoryCount": {
+            "World News": 5,
+            "Local News": 5,
+            "Journalism": 5,
+            "Cybersecurity": 5,
+            "Technology": 5,
+            "Science": 5,
+            "Business & Finance": 5,
+            "Entertainment": 5,
+            "Sports": 5,
+            "Health & Wellness": 5,
+            "Lifestyle": 5,
+            "Politics": 5,
+            "Education": 5,
+            "Environment & Nature": 5,
+            "Culture & Society": 5,
+            "Automotive": 5,
+            "Gaming": 5,
+            "Travel": 5,
+            "Real Estate": 5,
+            "Opinion & Editorial": 5,
+            "Art & Design": 5,
+            "Other": 5
+        }
+    },
+    "categories" : [
+        {
+            "name" : "World News",
+            "feeds" : [
+                {
+                    "title": "Al Jazeera",
+                    "url": "https://www.aljazeera.com/xml/rss/all.xml"
+                },
+                {
+                    "title": "BBC World",
+                    "url": "https://feeds.bbci.co.uk/news/world/rss.xml"
+                }
+            ]
+        },
+        {
+            "name" : "Local News",
+            "feeds" : []
+        },
+        {
+            "name" : "Journalism",
+            "feeds" : [
+                {
+                    "title": "Pro Publica",
+                    "url": "https://www.propublica.org/feeds/main"
+                }
+            ]
+        },
+        {
+            "name" : "Cybersecurity",
+            "feeds" : [
+                {
+                    "title": "Cyberwire Daily",
+                    "url": "https://feeds.megaphone.fm/cyberwire-daily-podcast"
+                },
+                {
+                    "title": "Troy Hunt",
+                    "url": "https://feeds.feedburner.com/TroyHunt"
+                },
+                {
+                    "title": "The Hacker News",
+                    "url": "https://feeds.feedburner.com/TheHackersNews"
+                }
+            ]
+        },
+        {
+            "name" : "Technology",
+            "feeds" : [
+                {
+                    "title": "Ars Technica",
+                    "url": "https://feeds.arstechnica.com/arstechnica/index"
+                }
+            ]
+        },
+        {
+            "name" : "Science",
+            "feeds" : [
+                {
+                    "title": "Science Daily",
+                    "url": "https://www.sciencedaily.com/rss/all.xml"
+                }
+            ]
+        },
+        {
+            "name" : "Business & Finance",
+            "feeds" : []
+        },
+        {
+            "name" : "Entertainment",
+            "feeds" : []
+        },
+        {
+            "name" : "Sports",
+            "feeds" : []
+        },
+        {
+            "name" : "Health & Wellness",
+            "feeds" : []
+        },
+        {
+            "name" : "Lifestyle",
+            "feeds" : []
+        },
+        {
+            "name" : "Politics",
+            "feeds" : []
+        },
+        {
+            "name" : "Education",
+            "feeds" : []
+        },
+        {
+            "name" : "Environment & Nature",
+            "feeds" : []
+        },
+        {
+            "name" : "Culture & Society",
+            "feeds" : []
+        },
+        {
+            "name" : "Automotive",
+            "feeds" : []
+        },
+        {
+            "name" : "Gaming",
+            "feeds" : []
+        },
+        {
+            "name" : "Travel",
+            "feeds" : []
+        },
+        {
+            "name" : "Real Estate",
+            "feeds" : []
+        },
+        {
+            "name" : "Opinion & Editorial",
+            "feeds" : []
+        },
+        {
+            "name" : "Art & Design",
+            "feeds" : []
+        },
+        {
+            "name" : "Other",
+            "feeds" : []
+        }
+    ]
+
+}

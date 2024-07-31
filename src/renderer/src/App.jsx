@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await window.expressApi.rss();
+      const res = await window.api.rss();
       setData(res);
       console.log(res);
     };

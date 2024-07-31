@@ -6,6 +6,8 @@ import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import * as path from 'path';
 const axios = require('axios');
 
+import getFeeds from './getFeeds';
+
 function createWindow() {
     let mainWindow = new BrowserWindow({
         webPreferences: {
@@ -22,7 +24,7 @@ function createWindow() {
 
     // DevTools
     if (process.env.NODE_ENV === 'development') {
-        mainWindow.webContents.openDevTools();
+        // mainWindow.webContents.openDevTools();
     }
 
     mainWindow.on('closed', () => {
@@ -45,13 +47,24 @@ app.whenReady().then(() => {
     });
 
     // Express API call for RSS feeds
-    ipcMain.handle('express-rss-feeds', async () => {
+    // ipcMain.handle('express-rss-feeds', async () => {
+    //     try {
+    //         const response = await axios.get('http://localhost:5069/rss/get');
+    //         return response.data;
+    //     } catch (error) {
+    //         console.error('Error fetching rss feeds:', error);
+    //         return { error: 'Failed to fetch rss feeds' };
+    //     }
+    // });
+
+    // IPC handler for fetching RSS feeds
+    ipcMain.handle('get-feeds', async () => {
         try {
-            const response = await axios.get('http://localhost:5069/rss/get');
-            return response.data;
+            const feeds = getFeeds();
+            return feeds;
         } catch (error) {
-            console.error('Error fetching rss feeds:', error);
-            return { error: 'Failed to fetch rss feeds' };
+            console.error('Error fetching feeds:', error);
+            return { error: 'Failed to fetch feeds' };
         }
     });
 
