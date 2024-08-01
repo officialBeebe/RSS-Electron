@@ -1,3 +1,19 @@
-Layout was created in accordance to [LogRocket](https://blog.logrocket.com/build-electron-app-electron-vite/) 
+## Introduction
 
-See [Netlify](https://evite.netlify.app/guide/dev.html) for more
+This app is an adaptation of my own `startpage` news feed made into cards. It is a work in progress.
+
+## Roadmap
+
+- [ ] Toolbar features
+  - [ ] Add feed
+  - [ ] Edit category counts
+    - [ ] Individual feed counts?
+      - [ ] By age?
+      - [ ] Max?
+  - [ ] Edit category card colors
+- [ ] Styling
+  - [ ] More subdued mood, _paint it black_
+  - [ ] Vertical cards 3:4 ratio
+- [ ] General
+  - [ ] Remove on read? Maybe an `X` to filter once read?
+  - [ ] Web-~~scraped~~ image teaser?
