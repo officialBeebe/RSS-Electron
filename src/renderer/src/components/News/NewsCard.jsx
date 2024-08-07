@@ -23,6 +23,7 @@ function NewsCard({ data }) {
         return text;
     };
 
+    
     return (
         <div
             className={`news-card ${concatCategory(category)}`}
