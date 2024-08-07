@@ -15981,7 +15981,9 @@ function createWindow() {
   });
   electron.ipcMain.handle("ping", () => "pong");
   mainWindow2.loadURL("http://localhost:5173");
-  if (process.env.NODE_ENV === "development") ;
+  if (process.env.NODE_ENV === "development") {
+    mainWindow2.webContents.openDevTools();
+  }
   mainWindow2.on("closed", () => {
     mainWindow2 = null;
   });
